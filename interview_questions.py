@@ -181,7 +181,7 @@ print indices_of_numbers_adding_upto_target([1,2,3,6,0,8,5], 11)
 #     unittest.main()
 
 
-
+*******************************************************************************************************************************
 # x = 0
 # li1 = [1,2,3,4]
 # for m in li1:
@@ -196,7 +196,7 @@ print indices_of_numbers_adding_upto_target([1,2,3,6,0,8,5], 11)
 # so the runtime for iterating over each loop is n times n.
 # where n is the length of the loop.
 
-
+********************************************************************************************************************************
 # Question: Our goal is to write a boolean function that will take two strings and return whether they are anagrams.
 def find_anagrams(str1, str2):
 
@@ -263,6 +263,7 @@ d = c[::-1]
 
 print d
 
+****************************************************************************************************************************************
 # Option 2 : This is a bad answer in terms of efficiency
 # we are unnecessarily creating 2nd dictionary.
 def count_characters(input):
@@ -289,6 +290,7 @@ print is_it_anagram("AAABBAbAAAAAAAB", "BBAAAAAAAbAAAAAA")
 print is_it_anagram("stream", "stre")
 
 
+**************************************************************************************************************************************
 # Question: List has duplicates except for 1
 # find that non-duplicate number
 a = [1,2,3,4,1,2,3,5,5,6,7,6,4]
@@ -307,6 +309,7 @@ def find_non_duplicate(lista):
             return key
     return True
 
+****************************************************************************************************************************************
 ## alternative answer
 def find_nondup(values):
     seen = {}
@@ -321,7 +324,7 @@ def find_nondup(values):
 print find_non_duplicate(a)
 print find_non_duplicate(b)
 
-
+***************************************************************************************************************************************
 def findSmallestInt(arr):
     """ Return min in the array """
     smallest = arr[0]
@@ -339,7 +342,7 @@ print find_smallest([78,56,232,12,11,43])
 print find_smallest([78,56,-2,12,8,-33])
 print find_smallest([0, -1-sys.maxint,sys.maxint])
 
-
+************************************************************************************************************************************
 def find_short(s):
     lista = s.split()
     l = len(lista[0])
@@ -348,6 +351,7 @@ def find_short(s):
             l = len(x)
     return l
 
+*************************************************************************************************************************************
 def make_negative( number ):
     """ Return a negative number.
     input: Any intger could be 0, positive or negative.
@@ -357,12 +361,14 @@ def make_negative( number ):
     else:
         return number
 
+************************************************************************************************************************************    
 def multiply(a, b):
     if isinstance(a,int) and isinstance(b,int):
       return (a * b)
     else:
         return None
-
+    
+*************************************************************************************************************************************
 def find_len_of_short_substring(s):
     l = min([len(x) for x in s.split()])
     return l
@@ -370,7 +376,7 @@ def find_len_of_short_substring(s):
 print find_short("Lets all go on holiday somewhere very cold")
 
 
-print "*" * 100
+*************************************************************************************************************************************
 #Calculate how many times a number can be divided by a given number.
 def divide_number(num, divider):
     i = 0
@@ -385,7 +391,7 @@ print divide_number(600,2)
 print divide_number(2450,5)
 
 
-print '*' * 40
+*************************************************************************************************************************************
 ## Linear search
 def linear_search_algo_1(arr, item):
     pos = None
@@ -420,7 +426,7 @@ def linear_search_2(arr, item):
 print linear_search_2([1,2,3,4,5,6], 4)
 print linear_search_2([1,2,3,4,5,6], 0)
 
-
+**************************************************************************************************************************************
 ## Who likes it?
 def likes(names):
     # make a dictionary d of all the possible answers. Keys are the respective number
@@ -453,7 +459,7 @@ print likes(['Max', 'John', 'Mark'])
 print likes(['Alex', 'Jacob', 'Mark', 'Max'])
 
 
-print '*' * 20
+*************************************************************************************************************************************
 names = ['acv' ,'abc', 'aff', 'utut', 'dfdf']
 length = len(names)
 d = {
@@ -466,7 +472,7 @@ d = {
 
 print d[min(4, length)].format(*names, others=length - 2)
 
-
+*****************************************************************************************************************************************
 def sort_array(source_array):
     if len(source_array) == 0:
         return source_array
@@ -496,7 +502,7 @@ def sort_array(source_array):
 print sort_array([5, 3, 2, 8, 1, 4])
 
 
-
+****************************************************************************************************************************************
 def sort_array(source_array):
     if len(source_array) == 0:
         return source_array
@@ -526,7 +532,7 @@ def sort_array(source_array):
 print sort_array([5, 3, 2, 8, 1, 4])
 
 
-
+****************************************************************************************************************************************
 def sort_array(source_array):
     if len(source_array) == 0:
         return source_array
@@ -553,12 +559,12 @@ def sort_array(source_array):
 
 print sort_array([5, 3, 2, 8, 1, 4])
 
-
+**************************************************************************************************************************************
 ## ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain
 ## # anything but exactly 4 digits or exactly 6 digits.
 ## If the function is passed a valid PIN string, return true, else return false.
 
-print 'M' * 15
+
 def validate_pin(pin):
     new_pin = pin[:]
     smallest = pin[0]
@@ -580,7 +586,7 @@ print validate_pin(a_ints)
 print validate_pin(b_ints)
 
 
-print 'oo' * 15
+**************************************************************************************************************************************
 def validate_pin(pin):
     new_pin = pin[:]
     smallest = pin[0]
@@ -601,7 +607,7 @@ print validate_pin(a_ints)
 print validate_pin(b_ints)
 
 
-
+****************************************************************************************************************************************
 ## Given an array (a list in Python) of integers and an integer n, find all occurrences
 ## of n in the given array and return another array containing all the index
 # positions of n in the given array. If n is not in the given array, return an empty array [].
@@ -612,7 +618,8 @@ def find_all(array, n):
     for ind, e in enumerate(array):
         if e == n:
             pass
-
+        
+***************************************************************************************************************************************
 # Find binary value of a given int
 def find_highest_power_2(num):
     n=0
@@ -620,6 +627,7 @@ def find_highest_power_2(num):
         n += 1
     return n-1
 
+***************************************************************************************************************************************
 def add_binary(a,b):
     sum = a + b
     number = 0
@@ -629,7 +637,7 @@ def add_binary(a,b):
         sum = sum - 2**place_holder
     return str(number)
 
-
+**************************************************************************************************************************************
 #Replace With Alphabet Position
 # Welcome. In this kata you are required to, given a string,
 # replace every letter with its position in the alphabet.
@@ -640,7 +648,7 @@ import string
 def alphabet_position(text):
     alphabet_dict = dict(zip(string.ascii_lowercase, range(1,27)))
 
-
+**************************************************************************************************************************************
 # sum_two_smallest_numbers
 def sum_two_smallest_numbers(numbers):
     least_a, least_b = numbers[0], numbers[1]
@@ -659,7 +667,7 @@ print sum_two_smallest_numbers([90,92,93,94,99,9,8,2])
 
 
 
-print "90909090" * 5
+***************************************************************************************************************************************
 def sqrt(x):
     ans = 0
     if x >= 0:
@@ -676,7 +684,7 @@ print sqrt(25)
 print sqrt(90)
 
 
-print "****" * 10
+***************************************************************************************************************************************
 def factorial(n):
     if n == 0:
         return 1
@@ -685,7 +693,7 @@ def factorial(n):
 
 print factorial(12)
 
-
+**************************************************************************************************************************************
 def ispalindrome(string1):
     if len(string1) <=1 :
         return True
@@ -697,7 +705,7 @@ print ispalindrome("aabbaa")
 print ispalindrome("aabba")
 
 
-
+******************************************************************************************************************************************
 class Foo(object):
     """ 
     if type is different in the argument, reset counter to 1.
@@ -723,9 +731,6 @@ class Foo(object):
         else:
             Foo.counter += 1
             print Foo.counter
-
-
-
 
 
 print "-------------------------- bar "
@@ -755,3 +760,6 @@ print "-------------------------- test "
 f = Foo("test", 200)
 print f.counter
 ## result >> 203
+
+*********************************************************************************************************************************************************************************************
+Question : You are given a string representing a number in binary. Your task is to delete all the unset bits in this string and return the corresponding number (after keeping only the '1's).
