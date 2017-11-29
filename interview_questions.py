@@ -695,3 +695,63 @@ def ispalindrome(string1):
 print "$$$" * 15
 print ispalindrome("aabbaa")
 print ispalindrome("aabba")
+
+
+
+class Foo(object):
+    """ 
+    if type is different in the argument, reset counter to 1.
+    Otherwise increament counter by 1. Use start_range as a starting point.
+    """
+
+    type_name = "bar"
+    counter = 1
+
+    def __init__(self, next_type_name, start_range):
+        self.next_type_name = next_type_name
+        self.start_range = start_range
+        self.reset()
+
+
+    def reset(self):
+        Foo.counter =self.start_range
+        print self.next_type_name, Foo.type_name
+        if Foo.type_name != self.next_type_name:
+            print "here..."
+            Foo.counter = self.start_range+1
+            Foo.type_name = self.next_type_name
+        else:
+            Foo.counter += 1
+            print Foo.counter
+
+
+
+
+
+print "-------------------------- bar "
+d = Foo("bar", 100)
+print d.counter
+## result >> 101
+
+print "-------------------------- list "
+new_instances = []
+for i in range(0, 10):
+    new_instances.append(Foo("bar", 100))
+    print new_instances[i].counter
+## result >> 102, 103, 104, 105, 106, 107, 108, 109, 110, 111
+
+
+print "-------------------------- test starts here ... "
+c = Foo("test", 200)
+print c.counter
+## result >> 201
+
+print "-------------------------- test "
+e = Foo("test", 200)
+print e.counter
+## result >> 202
+
+print "-------------------------- test "
+f = Foo("test", 200)
+print f.counter
+## result >> 203
