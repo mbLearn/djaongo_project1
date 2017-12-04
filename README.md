@@ -12,16 +12,16 @@ Django App:
 
 Database settings: 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+	DATABASES = {
+	    'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': 'myproject',
+		'USER': 'myprojectuser',
+		'PASSWORD': 'password',
+		'HOST': 'localhost',
+		'PORT': '',
+	    }
+	}
 
 How to Access psql: 
 
@@ -29,20 +29,20 @@ How to Access psql:
 (myprojects) mmRbA:myprojects mayurinisar$ psql myproject
 
 
-myproject=# \dt
-                      List of relations
- Schema |            Name            | Type  |     Owner     
---------+----------------------------+-------+---------------
- public | auth_group                 | table | myprojectuser
- public | auth_group_permissions     | table | myprojectuser
- public | auth_permission            | table | myprojectuser
- public | auth_user                  | table | myprojectuser
- public | auth_user_groups           | table | myprojectuser
- public | auth_user_user_permissions | table | myprojectuser
- public | django_admin_log           | table | myprojectuser
- public | django_content_type        | table | myprojectuser
- public | django_migrations          | table | myprojectuser
- public | django_session             | table | myprojectuser
+	myproject=# \dt
+			      List of relations
+	 Schema |            Name            | Type  |     Owner     
+	--------+----------------------------+-------+---------------
+	 public | auth_group                 | table | myprojectuser
+	 public | auth_group_permissions     | table | myprojectuser
+	 public | auth_permission            | table | myprojectuser
+	 public | auth_user                  | table | myprojectuser
+	 public | auth_user_groups           | table | myprojectuser
+	 public | auth_user_user_permissions | table | myprojectuser
+	 public | django_admin_log           | table | myprojectuser
+	 public | django_content_type        | table | myprojectuser
+	 public | django_migrations          | table | myprojectuser
+	 public | django_session             | table | myprojectuser
 
 
 Troubleshoot sql connection issues:
@@ -54,9 +54,9 @@ psql: could not connect to server: No such file or directory
 	connections on Unix domain socket “/tmp/.s.PGSQL.5432"?
 
 Solution: 
-postgres -D /usr/local/var/postgres
-rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8
-pg_ctl -D /usr/local/var/postgres -l logfile start
+	postgres -D /usr/local/var/postgres
+	rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8
+	pg_ctl -D /usr/local/var/postgres -l logfile start
 
 
 What does the above command do?
@@ -111,39 +111,36 @@ In most cases, CASCADE is the expected behaviour, but for every ForeignKey, you 
 Field lookups
 Field lookups are how you specify the meat of an SQL WHERE clause. They’re specified as keyword arguments to the QuerySetmethods filter(), exclude() and get().
 Basic lookups keyword arguments take the form field__lookuptype=value. (That’s a double-underscore). For example:
->>> Entry.objects.filter(pub_date__lte='2006-01-01')
+	>>> Entry.objects.filter(pub_date__lte='2006-01-01')
 translates (roughly) into the following SQL:
-SELECT * FROM blog_entry WHERE pub_date <= '2006-01-01';
+	SELECT * FROM blog_entry WHERE pub_date <= '2006-01-01';
 
 The field specified in a lookup has to be the name of a model field. There’s one exception though, in case of a ForeignKey you can specify the field name suffixed with _id. In this case, the value parameter is expected to contain the raw value of the foreign model’s primary key. For example:
->>> Entry.objects.filter(blog_id=4)
+	>>> Entry.objects.filter(blog_id=4)
 
 
 
 Example : year
 For date and datetime fields, an exact year match. Allows chaining additional field lookups. Takes an integer year.
 Example:
-Entry.objects.filter(pub_date__year=2005)
-Entry.objects.filter(pub_date__year__gte=2005)
+	Entry.objects.filter(pub_date__year=2005)
+	Entry.objects.filter(pub_date__year__gte=2005)
 
 SQL equivalent:
-SELECT ... WHERE pub_date BETWEEN '2005-01-01' AND '2005-12-31';
-SELECT ... WHERE pub_date >= '2005-01-01';
+	SELECT ... WHERE pub_date BETWEEN '2005-01-01' AND '2005-12-31';
+	SELECT ... WHERE pub_date >= '2005-01-01';
 
 
 regex
 Case-sensitive regular expression match.
 The regular expression syntax is that of the database backend in use. In the case of SQLite, which has no built in regular expression support, this feature is provided by a (Python) user-defined REGEXP function, and the regular expression syntax is therefore that of Python’s re module.
 Example:
-Entry.objects.get(title__regex=r'^(An?|The) +’)
+	Entry.objects.get(title__regex=r'^(An?|The) +’)
 
 SQL equivalents:
-SELECT ... WHERE title REGEXP BINARY '^(An?|The) +'; -- MySQL
-
-SELECT ... WHERE REGEXP_LIKE(title, '^(An?|The) +', 'c'); -- Oracle
-
-SELECT ... WHERE title ~ '^(An?|The) +'; -- PostgreSQL
-
-SELECT ... WHERE title REGEXP '^(An?|The) +'; -- SQLite
+	SELECT ... WHERE title REGEXP BINARY '^(An?|The) +'; -- MySQL
+	SELECT ... WHERE REGEXP_LIKE(title, '^(An?|The) +', 'c'); -- Oracle
+	SELECT ... WHERE title ~ '^(An?|The) +'; -- PostgreSQL
+	SELECT ... WHERE title REGEXP '^(An?|The) +'; -- SQLite
 Using raw strings (e.g., r'foo' instead of 'foo') for passing in the regular expression syntax is recommended.
 
