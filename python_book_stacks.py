@@ -123,7 +123,12 @@ def infixToPosefix(infixexpr):
                 topToken = opStack.pop()
         else:
             while (not opStack.isEmpty()) and \
-                    (prec[opStack.peek()] )
+                    (prec[opStack.peek()] >= prec[token]):
+                postfixList.append(opStack.pop())
+            opStack.push(token)
+    while not opStack.isEmpty():
+        postfixList.append(opStack.pop())
+    return " ".join(postfixList)
 
 
 
